@@ -1,0 +1,36 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'kpt', :plugin => 'redmine_kpt' %>
+  <%= stylesheet_link_tag 'kpt-index', :plugin => 'redmine_kpt' %>
+<% end %>
+
+<div id="kpt">
+  <div id="kpt_menu">
+    <%= link_to l(:label_kpt_new), '#', :class => 'new_kpt_board icon icon-add' if permit_kpt_boards? :create %>
+  </div>
+
+  <div id="kpt_board_editor">
+    <h2><%= l(:label_kpt_new) %></h2>
+    <%= form_for KptBoard.new, :url => project_kpt_index_path(@project), :remote => true do |f| %>
+      <div><%= f.text_field :title, :size => 50, :maxlength => 80, :required => true %></div>
+      <div><%= f.submit l(:button_create), :data => { :disable_with => l(:button_create) } %></div>
+    <% end %>
+  </div>
+
+  <h2>KPT</h2>
+
+  <div id="kpt_boards">
+    <%= render @kpt_boards %>
+  </div>
+</div>
+
+<%= javascript_tag do %>
+(function($){
+  $("a.new_kpt_board").show().click(function() {
+    $("#kpt_board_editor").toggle("normal");
+    $("#kpt_board_title").focus();
+  });
+  if($("div.kpt_board").get().length == 0)
+    $("a.new_kpt_board").click();
+  $("#kpt_history").KptHistory();
+})(jQuery);
+<% end %>

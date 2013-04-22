@@ -1,0 +1,3 @@
+<% if @kpt_board.persisted? && @kpt_board.locked? %>
+  $KPT.offline().sync().formLock();
+<% end %>

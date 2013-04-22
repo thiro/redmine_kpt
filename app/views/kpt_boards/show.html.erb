@@ -1,0 +1,41 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'kpt', :plugin => 'redmine_kpt' %>
+  <%= stylesheet_link_tag 'kpt-show', :plugin => 'redmine_kpt' %>
+  <%= javascript_include_tag 'jquery.periodicalupdater.js', :plugin => 'redmine_kpt' %>
+  <%= javascript_include_tag 'kpt.view.js', :plugin => 'redmine_kpt' %>
+<% end %>
+
+<div id="kpt" class="kpt_board">
+  <div id="kpt_menu">
+    <%= link_to_enable_live_update_kpt_board %>
+    <%= link_to_disable_live_update_kpt_board %>
+    <%= link_to_edit_kpt_board %>
+    <%= link_to_lock_kpt_board %>
+    <%= link_to_unlock_kpt_board %>
+    <%= link_to_delete_kpt_board %>
+  </div>
+
+  <h2><%= link_to 'KPT', project_kpt_index_path(@project) %> &gt; <span class="title"><%= @kpt_board.title %></span></h2>
+
+  <%= render "kpt_entries/form" if permit_kpt_entries? :create %>
+
+  <p id="errorExplanation" class="errorExplanation" style="display:none;"><%=l :error_kpt_live_update_failed %></p>
+  <p class="warning" style="display:none;"></p>
+
+  <div id="kpt_entries">
+    <div class="keep"><h3>KEEP</h3><ul></ul></div>
+    <div class="problem"><h3>PROBLEM</h3><ul></ul></div>
+    <div class="try"><h3>TRY</h3><ul></ul></div>
+  </div>
+  <ul id="kpt_queue"><%= render @kpt_board.entries %></ul>
+</div>
+
+<!-- hide the redmine built-in indicator at ajaxSend -->
+<div class="ajax-loading" style="display:none;"></div>
+<%= javascript_tag do %>
+var $KPT = null; /* TODO: guess to be confrict with TurboLinks */
+(function($) {
+  $KPT = $("#kpt").KptBoard({ url: "<%=j project_kpt_path(@project, @kpt_board) %>" });
+  $KPT.setup(<%=raw @kpt_board.locked?.to_json %>, <%=raw permit_kpt_entries?(:create).to_json %>);
+})(jQuery);
+<% end %>

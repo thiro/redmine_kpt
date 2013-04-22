@@ -1,0 +1,19 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'kpt', :plugin => 'redmine_kpt' %>
+  <%= stylesheet_link_tag 'kpt-edit', :plugin => 'redmine_kpt' %>
+<% end %>
+
+<div id="kpt">
+  <div id="kpt_menu"></div>
+
+  <h2><%= l(:label_kpt_edit) %> &gt; <%= link_to @kpt_board.title, project_kpt_path(@project, @kpt_board) %></h2>
+
+  <div id="kpt_edit">
+    <%= error_messages_for @kpt_board %> <!-- is redmine built-in -->
+    <%= form_for @kpt_board, :url => project_kpt_path(@project) do |f| %>
+      <%= f.label :title %> :
+      <%= f.text_field :title, :size => 50, :maxlength => 80, :required => true %>
+      <%= f.submit l(:button_save) %>
+    <% end %>
+  </div>
+</div>

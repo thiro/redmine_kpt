@@ -1,0 +1,73 @@
+/*
+ * Common block
+ */
+#kpt { position: relative; }
+#kpt h2 {
+	margin: 0px;
+	font-size: 200%;
+}
+#kpt h3 {
+	font-size: 150%;
+	border-radius: 16px;
+	text-align: center;
+	margin-bottom: 6px;
+	padding: 4px 0px;
+	color: #fff;
+	text-shadow: -1px -1px 0px rgba(0,0,0,0.8);
+	box-shadow: inset 4px 4px 4px rgba(0,0,0,0.5);
+}
+
+/*
+ * Common menu
+ */
+#kpt_menu {
+	float: right;
+	text-align: right;
+}
+#kpt_menu a { display: none; }
+#kpt_menu .icon-sync { background-image: url(../images/sync.gif); }
+
+/*
+ * Common entry list
+ */
+#kpt_entries { }
+#kpt_entries div.keep    h3 { background-color: #79f; }
+#kpt_entries div.problem h3 { background-color: #f78; }
+#kpt_entries div.try     h3 { background-color: #5c7; }
+#kpt_entries ul {
+	margin: 0px;
+	padding: 0px;
+	line-height: 150%;
+}
+#kpt_entries ul.keep,
+#kpt_entries ul.problem,
+#kpt_entries ul.try { }
+#kpt_entries ul li {
+	margin: 0px;
+	padding: 1px 0px 1px 12px;
+	list-style: none;
+	font-size: 120%;
+	font-weight: normal;
+	cursor: default;
+	position: relative;
+}
+
+#kpt_entries ul li:hover { }
+#kpt_entries ul li:hover > div.detail {
+	display: block;
+	position: absolute;
+	z-index: 10;
+	top: 1.6em;
+	left: 3em;
+}
+#kpt_entries ul div.detail {
+	display: none;
+	margin: 0px;
+	padding: 1em;
+	font-size: 100%;
+	font-weight: normal;
+	border: 2px solid #aaa;
+	border-radius: 16px;
+	background-color: white;
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+}

@@ -1,0 +1,14 @@
+<div id="kpt_input" style="display:none;">
+  <%= form_for KptEntry.new, :url => project_kpt_entries_path(@project, @kpt_board), :remote => true do |f| %>
+    <ul>
+      <li><%= f.radio_button :kind, KptEntry::KEEP %>
+          <%= f.label :kind, "KEEP", :value => KptEntry::KEEP, :class => 'radio keep' %></li>
+      <li><%= f.radio_button :kind, KptEntry::PROBLEM %>
+          <%= f.label :kind, "PROBLEM", :value => KptEntry::PROBLEM, :class => 'radio problem' %></li>
+      <li><%= f.radio_button :kind, KptEntry::TRY %>
+          <%= f.label :kind, "TRY", :value => KptEntry::TRY, :class => 'radio try' %></li>
+    </ul>
+    <div><%= f.text_field :description, :size => 66 %></div>
+    <div><%= f.submit l(:button_create), :data => { :disable_with => l(:button_create) } %></div>
+  <% end %>
+</div>

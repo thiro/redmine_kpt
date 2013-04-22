@@ -1,0 +1,11 @@
+<div class="kpt_board">
+  <h2><%= link_to kpt_board.title, project_kpt_path(@project, kpt_board) %></h2>
+  <%= kpt_board_status kpt_board %>
+  <div>
+    <!-- TODO: Draw a graph the rate of K:P:T -->
+    | Keep:<%= kpt_board.keeps_count %>
+    | Problem:<%= kpt_board.problems_count %>
+    | Try:<%= kpt_board.tries_count %>
+    |
+  </div>
+</div>

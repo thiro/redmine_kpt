@@ -1,0 +1,9 @@
+$KPT.title("<%=j @kpt_board.title %>");
+$KPT.draw("<%=j render(@kpt_entries) %>");
+
+<% if @kpt_board.locked? %>
+  $KPT.formLock();
+  $KPT.offline();
+<% else %>
+  $KPT.formUnlock();
+<% end %>

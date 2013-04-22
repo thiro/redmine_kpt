@@ -1,0 +1,8 @@
+<% if @kpt_board.persisted? %>
+  $("#kpt_board_title").val("");
+  $("#kpt_boards").prepend("<%= escape_javascript(render @kpt_board) %>")
+                  .children("div:first").hide().show("blind",{ direction:"vertical" });
+  $("a.new_kpt_board").next().hide("normal");
+<% else %>
+  $("#kpt_contextual .dialog").effect("shake");
+<% end %>

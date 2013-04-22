@@ -1,0 +1,8 @@
+<% if @kpt_entry.persisted? %>
+  $KPT.formClear();
+  $KPT.sync();
+  $KPT.warning();
+<% else %>
+  $KPT.formShake();
+  $KPT.warning("<%=j @kpt_entry.errors.full_messages.join %>");
+<% end %>
