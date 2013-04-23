@@ -2,7 +2,7 @@ Redmine::Plugin.register :redmine_kpt do
   name 'Redmine KPT plugin'
   author 'Takuya Hirota'
   description 'Keep/Problem/Try plugin for Redmine'
-  version '0.0.1'
+  version '0.1.0'
   url 'https://github.com/thiro/redmine_kpt'
   author_url 'https://github.com/thiro/redmine_kpt'
 
