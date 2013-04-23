@@ -1,7 +1,7 @@
 namespace :redmine do
-  namespace :kpt => :environment do
+  namespace :kpt do
     desc 'Install Redmine KPT plugin'
-    task :install do
+    task :install => :environment do
       ENV['NAME'] = 'redmine_kpt'
       ENV.delete 'VERSION'
       Rake::Task['redmine:plugins:migrate'].invoke
