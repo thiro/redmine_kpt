@@ -1,7 +1,7 @@
 class KptBoardsController < ApplicationController
   unloadable
   before_filter :find_project, :authorize # access control
-  before_filter :find_kpt_board, :except => :index
+  before_filter :find_kpt_board, :except => [:index, :create]
   respond_to :html, :js
 
   def index
