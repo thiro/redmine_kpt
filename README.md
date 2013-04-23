@@ -6,21 +6,21 @@ Supported Redmine 2.2.x, 2.3.0.
 
 ## Installation
 
-A. Copy the plugin into the Redmine plugins directory.
+A. Copy this plugin into Redmine/plugins directory.
 
 B. Migrations, rake task are available.
 
     bundle exec rake redmine:kpt:install RAILS_ENV=production
 
-C. Restart Redmine and set permissions at *Roles and Permissions* administrator menu.
+C. Restart Redmine and setup permissions at *Roles and Permissions* administrator menu.
 
 D. Enable KPT module in a project settings.
 
 ## Uninstallation
 
-Do following task if you want to drop KPT data from DB.
+Following task is drop all KPT data.
 
     bundle exec rake redmine:kpt:uninstall RAILS_ENV=production
 
-And remove redmine\_kpt directory.
+Remove redmine\_kpt directory.
 
